@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'FlashCard_Quiz',
       theme: ThemeData(
 
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
         useMaterial3: true,
       ),
       home: Center(child: const MyHomePage(title: 'FlashCard Quiz ')),
