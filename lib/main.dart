@@ -8,6 +8,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+  // run the emulator and install the default app first
+  // lets  start the app
+  // first of all create a  model for the question
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
