@@ -1,0 +1,2 @@
+Now before moving to Ui design first lets make some constant  vatriable
+- create a separate file
