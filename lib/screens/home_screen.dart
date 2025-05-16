@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../model/question_model.dart';
 import '../widgets/question_widget.dart';
+import '../widgets/next_button.dart';
 
 // create the HomeScreen widget
 
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   //creating a list data for the question
   // whether the list is final or not .. check it later on
-final List<Question> _questions= [
+ List<Question> _questions= [
     Question(id: '10', title: 'what is 2 +2', options:  {'5':false,
     '6':false, '4':true, '10':false}),
     Question(id: '11', title: 'what is 12 +2', options:  {'5':false,
@@ -27,13 +28,23 @@ final List<Question> _questions= [
 
   //create an index to loop through -questions
   int index=0;
+  // create a function to display the next question
+  void nextQuestion(){
+    if (index== _questions.length-1){
+      return;
+    } else {
+      setState(() {
+        index++; // after index changing , the app will be rebuild
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    // change the background colot
+    // change the background color
     return Scaffold(
-      backgroundColor:Colors.lightBlue,
+      backgroundColor:background,
       appBar: AppBar(
-        backgroundColor: background,
+        backgroundColor: Colors.blue,
         shadowColor: Colors.transparent,
         title: Text('Quiz App'),
       ),
@@ -54,6 +65,14 @@ final List<Question> _questions= [
           ],
         ),
       ),
+      // use floating button
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: NextButton(
+          nextQuestion: nextQuestion, // the above function called
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }// import this file to main.dart file
