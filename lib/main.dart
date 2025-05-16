@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),// creating  this in a separate folder for differnt screen
+      home: HomeScreen(),// creating  this in a separate folder for different screen
     );
   }
 }
