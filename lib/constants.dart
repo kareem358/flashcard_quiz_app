@@ -7,3 +7,4 @@ const Color incorrect= Color(0xFF0000);
 // set a netural color
 const Color netural= Color(0xEFEFEF);
 // set same background color
+const Color background= Color(0xE68BD);
