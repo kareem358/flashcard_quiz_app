@@ -12,3 +12,14 @@ Now before moving to Ui design first lets make some constant  vatriable
 - now lets create our question widget
 - lts add it to out homepage
 - we can change the style of the question
+- with that our question widget is ready
+
+- next i am gonna create the next question button(floating one)
+- add it to the homeScreen where  it is needed
+- adding some functionalities to it
+- like on clicking next question will show
+- doing so we need to pass  a function that will do all the work
+- the next button will show an error becuse the index increment with the next button
+  will exceed the question number and will not find the required index
+- to fix this add some condition
+- now it will be fixed and if the list will ended , the button will show nothing
