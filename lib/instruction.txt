@@ -1,5 +1,9 @@
 Now before moving to Ui design first lets make some constant  vatriable
 - create a separate file
 
-lets start creating the homepage
-first delete all the default code and start from scratch
+-lets start creating the homepage
+-first delete all the default code and start from scratch
+
+-lets start work on UI
+-change the background color and the appbar first
+-import the constant dart file in our homepage . because it has our colors
