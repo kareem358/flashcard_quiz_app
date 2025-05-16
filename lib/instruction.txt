@@ -9,4 +9,6 @@ Now before moving to Ui design first lets make some constant  vatriable
 -import the constant dart file in our homepage . because it has our colors
 
 - lets add some demo question
-- now lers create ouur question widget
+- now lets create our question widget
+- lts add it to out homepage
+- we can change the style of the question
