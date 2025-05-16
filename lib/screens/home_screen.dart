@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
-// creat the HomeScreen widget
+import '../model/question_model.dart';
+
+// create the HomeScreen widget
 
 //stateful widget because it is the  parent widget and all the variable and function will be
 // in this  widget which can change the state of our widget anytime
@@ -12,13 +14,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //creating a list data for the question
+  List<Question> _questions= [
+    Question(id: '10', title: 'what is 2 +2', options:  {'5':false,
+    '6':false, '4':true, '10':false}),
+    Question(id: '11', title: 'what is 12 +2', options:  {'5':false,
+      '6':false, '14':true, '10':false})
+
+  ];
+
+  //create an index to loop through -questions
+  int index=0;
   @override
   Widget build(BuildContext context) {
     // change the background colot
     return Scaffold(
       backgroundColor:Colors.lightBlue,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: background,
+        shadowColor: Colors.transparent,
         title: Text('Quiz App'),
       ),
     );
