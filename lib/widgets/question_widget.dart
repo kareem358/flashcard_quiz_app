@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 
 class QuestionWidget extends StatelessWidget {
-  const QuestionWidget({super.key});
+  const QuestionWidget({super.key, required this.question, required this.indexAction,
+  required this.totalQuestions});
 // here we need the question title and the total number of questions,
   //  and also the index
   
@@ -13,7 +15,12 @@ class QuestionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      child:Text('Question ${indexAction + 1}/$totalQuestions: $question'),
+      child:Text('Question ${indexAction + 1}/$totalQuestions: $question',
+        style: const TextStyle(
+          fontSize: 24,
+          color: neutral,
+        ),),
+
     );
   }
 }
