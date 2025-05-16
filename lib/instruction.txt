@@ -1,2 +1,5 @@
 Now before moving to Ui design first lets make some constant  vatriable
 - create a separate file
+
+lets start creating the homepage
+first delete all the default code and start from scratch
