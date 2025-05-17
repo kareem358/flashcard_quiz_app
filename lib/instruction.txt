@@ -39,3 +39,9 @@ Now before moving to Ui design first lets make some constant  vatriable
   is  unchanged so its shows all the answers like before when it is clicked
 - lets fixed this, in the nextQuestion function
 - the problem is fixed now....
+
+now a little problem here
+you see that when a user clicks the next button then he can go to the next question
+even though even that he did not select any option , we don't want that . we want if a user didn't
+select any option , the app will a message the he has to select at least one option to continue .
+lets do this ...
