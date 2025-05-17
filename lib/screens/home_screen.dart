@@ -61,7 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ),
 
-            const Divider(color: neutral,)
+            const Divider(color: neutral,),
+            // add some const space
+            const SizedBox(height: 24.0,),
+            for(int i=0; i<_questions[index].options.length; i++)
+              Card(child: Text(_questions[index].options.keys.toList()[i]),
+              )
           ],
         ),
       ),
