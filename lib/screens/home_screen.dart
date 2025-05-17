@@ -90,12 +90,18 @@ class _HomeScreenState extends State<HomeScreen> {
             // add some const space
             const SizedBox(height: 24.0,),
             for(int i=0; i<_questions[index].options.length; i++)
-              OptionCard(option: _questions[index].options.keys.toList()[i],
-              color: isPressed ? _questions[index].options.values.toList()[i]==true
-                  ? correct:
-                    incorrect:
-                   neutral,
-              onTap: changeColor,),
+              GestureDetector(
+                onTap: (){},
+                child: OptionCard(
+                  option: _questions[index].options.keys.toList()[i],
+                // need to check if the answer is correct or false.
+                  color: isPressed ? _questions[index].options.values.toList()[i]==true
+                    ? correct:
+                      incorrect:
+                     neutral,
+                //onTap: changeColor,
+                          ),
+              ),
 
           ],
         ),
