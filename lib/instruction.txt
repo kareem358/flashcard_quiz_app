@@ -48,4 +48,6 @@ lets do this ...
 it is fixed now ..
 
 - lets add some score to show in our app.
--
+- adding some functions to increase the score value
+- when the user select the correct answer , the score value will be increased by 1.
+- let remove the gesture detector widget from the optionCard and put it in the parent widget.
