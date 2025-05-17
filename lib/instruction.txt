@@ -23,3 +23,7 @@ Now before moving to Ui design first lets make some constant  vatriable
   will exceed the question number and will not find the required index
 - to fix this add some condition
 - now it will be fixed and if the list will ended , the button will show nothing
+
+- next lets add the options
+- in the home screen below the divider where the for loop and card is added
+- lets create our custom widget for the option
