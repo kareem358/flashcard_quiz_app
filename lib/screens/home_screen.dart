@@ -29,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //create an index to loop through -questions
   int index=0;
+  // create a score variable
+ int score =0;
   // create a boolean value to check if the user has clicked or not
  bool isPressed= false;
   // create a function to display the next question
@@ -36,10 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
     if (index== _questions.length-1){
       return;
     } else {
-      setState(() {
-        index++; // after index changing , the app will be rebuild
-        isPressed= false;
-      });
+      if (isPressed) {
+        setState(() {
+          index++; // after index changing , the app will be rebuild
+          isPressed = false;
+        });
+      } else{
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Please select at least one option"),
+              behavior: SnackBarBehavior.floating,
+              margin: EdgeInsets.symmetric(vertical: 20.0),)
+        );
+      }
     }
   }
   // create a function for changing color
@@ -57,6 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.blue,
         shadowColor: Colors.transparent,
         title: Text('Quiz App'),
+        actions: [
+          Padding(padding: const EdgeInsets.all(18.0), child: Text("Score: $score",
+          style: const TextStyle(fontSize: 18.0),),),
+        ],
       ),
       body: Container(
         width: double.infinity,
