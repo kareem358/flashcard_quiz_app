@@ -45,3 +45,7 @@ you see that when a user clicks the next button then he can go to the next quest
 even though even that he did not select any option , we don't want that . we want if a user didn't
 select any option , the app will a message the he has to select at least one option to continue .
 lets do this ...
+it is fixed now ..
+
+- lets add some score to show in our app.
+-
