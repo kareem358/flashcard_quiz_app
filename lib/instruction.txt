@@ -27,3 +27,14 @@ Now before moving to Ui design first lets make some constant  vatriable
 - next lets add the options
 - in the home screen below the divider where the for loop and card is added
 - lets create our custom widget for the option
+- then add it to the homeScreen
+- make them clickable.
+- we need to change the color when option being clicked...
+- we cant let know the user for the correct answer even before he select anything ,
+  or he may clicked the desired option as his selected answer .
+- lets add some condition about it, if the user has clicked then change the color
+  otherwise don't change the color.
+- now this is fixed , just adding the function for when the isPressed value change.
+- now here another problem , when the next button is pressed the value of isPressed
+  is  unchanged so its shows all the answers like before when it is clicked
+- lets fixed this, in the nextQuestion functionn
