@@ -3,6 +3,7 @@ import '../constants.dart';
 import '../model/question_model.dart';
 import '../widgets/question_widget.dart';
 import '../widgets/next_button.dart';
+import '../widgets/option_card.dart';
 
 // create the HomeScreen widget
 
@@ -28,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //create an index to loop through -questions
   int index=0;
+  // create a boolean value to check if the user has clicked or not
+ bool isPressed= false;
   // create a function to display the next question
   void nextQuestion(){
     if (index== _questions.length-1){
@@ -35,9 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       setState(() {
         index++; // after index changing , the app will be rebuild
+        isPressed= false;
       });
     }
   }
+  // create a function for changing color
+ void changeColor(){
+    setState(() {
+      isPressed=true;
+    });
+ }
   @override
   Widget build(BuildContext context) {
     // change the background color
@@ -65,8 +75,13 @@ class _HomeScreenState extends State<HomeScreen> {
             // add some const space
             const SizedBox(height: 24.0,),
             for(int i=0; i<_questions[index].options.length; i++)
-              Card(child: Text(_questions[index].options.keys.toList()[i]),
-              )
+              OptionCard(option: _questions[index].options.keys.toList()[i],
+              color: isPressed ? _questions[index].options.values.toList()[i]==true
+                  ? correct:
+                    incorrect:
+                   neutral,
+              onTap: changeColor,),
+
           ],
         ),
       ),
