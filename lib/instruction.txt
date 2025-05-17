@@ -37,4 +37,5 @@ Now before moving to Ui design first lets make some constant  vatriable
 - now this is fixed , just adding the function for when the isPressed value change.
 - now here another problem , when the next button is pressed the value of isPressed
   is  unchanged so its shows all the answers like before when it is clicked
-- lets fixed this, in the nextQuestion functionn
+- lets fixed this, in the nextQuestion function
+- the problem is fixed now....
