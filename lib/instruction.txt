@@ -80,4 +80,7 @@ it is fixed now ..
 - now we need a function to , which function is to restart the quiz.
   creating it in the home page
 - now here we have one more problem that we can't select the wrong option
-  the problem is fixed with all its aspect and need 
+  the problem is fixed with all its aspect and need
+
+- now looking forward to polished and refine the app while adding some other features
+- working on database so visit the "firebase.google.com".
