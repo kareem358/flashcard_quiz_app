@@ -5,10 +5,12 @@ class ResultBox extends StatelessWidget {
   const ResultBox({super.key, 
     required this.result,
     required this.questionLength,
+    required this.onPressed,
     
   });
   final int result;
   final int questionLength;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,24 @@ class ResultBox extends StatelessWidget {
                   : "Great job!", // on greater than 50% will show
               style: TextStyle(color: neutral, fontSize: 20.0),
             ),
+            const SizedBox(height: 25.0,),
+            GestureDetector(
+              onTap: onPressed,
+                // now we need a function to , which function is to restart the quiz
+                // creating it in the home page
 
+
+              child: const Text(
+                "Start Over",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
+
+                ),
+              ),
+            )
           ],
         ),
       
