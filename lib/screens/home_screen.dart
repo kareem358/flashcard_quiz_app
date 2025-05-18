@@ -4,6 +4,8 @@ import '../model/question_model.dart';
 import '../widgets/question_widget.dart';
 import '../widgets/next_button.dart';
 import '../widgets/option_card.dart';
+import '../widgets/result_box.dart';
+
 
 // create the HomeScreen widget
 
@@ -39,7 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
     if (index== _questions.length-1){
       //return;
       // the block where the quiz end .. means question end
-      showDialog(context: context, builder: (ctx)=>AlertDialog());
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          // this will disable the dismiss function outside the box on clicking
+          builder: (ctx)=>ResultBox(
+        result: score,// total points the user got
+        questionLength: _questions.length,// out of  how many question
+      ));
     } else {
       if (isPressed) {
         setState(() {
