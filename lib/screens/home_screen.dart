@@ -48,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (ctx)=>ResultBox(
         result: score,// total points the user got
         questionLength: _questions.length,// out of  how many question
+            onPressed: startOver,
       ));
     } else {
       if (isPressed) {
@@ -74,15 +75,26 @@ class _HomeScreenState extends State<HomeScreen> {
       }else{
       if (value==true) {
         score++;
-        setState(() {
-          isPressed = true;
-          isAlreadySelected= true;
-        });
       }
+      setState(() {
+        isPressed = true;
+        isAlreadySelected= true;
+      });
 
     }
 
 
+ }
+
+ // create a function to start over
+ void startOver(){
+    setState(() {
+      index = 0;
+      score = 0;
+      isAlreadySelected = false;
+      isPressed = false;
+    });
+      Navigator.pop(context);
  }
   @override
   Widget build(BuildContext context) {
