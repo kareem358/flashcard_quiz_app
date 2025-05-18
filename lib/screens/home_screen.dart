@@ -37,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
   // create a function to display the next question
   void nextQuestion(){
     if (index== _questions.length-1){
-      return;
+      //return;
+      // the block where the quiz end .. means question end
+      showDialog(context: context, builder: (ctx)=>AlertDialog());
     } else {
       if (isPressed) {
         setState(() {
