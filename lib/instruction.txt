@@ -51,3 +51,17 @@ it is fixed now ..
 - adding some functions to increase the score value
 - when the user select the correct answer , the score value will be increased by 1.
 - let remove the gesture detector widget from the optionCard and put it in the parent widget.
+
+- changeColor Function to CheckAnswerAndUpdate function passing a bool value.
+- now the problem is here that the score value is increasing even when the answer is selected
+  means if we select the right option twice score will be increased by 2. now fixed that.
+  lets make the value of isAlreadySelected bool false when the nextQuestion is appeared
+  with next button.
+  its working now ...
+
+- everything is okay now moving further and polish our app step wise (8)
+  when the color of the optionCard is changed , it difficult to read the wording in the red
+  area of  different options
+  so we will make sure the color change of the text as well when the option color is changed ..
+  how it will work
+
