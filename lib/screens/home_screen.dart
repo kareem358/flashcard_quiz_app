@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
  int score =0;
   // create a boolean value to check if the user has clicked or not
  bool isPressed= false;
+ bool isAlreadySelected= false;
   // create a function to display the next question
   void nextQuestion(){
     if (index== _questions.length-1){
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() {
           index++; // after index changing , the app will be rebuild
           isPressed = false;
+          isAlreadySelected=false;
         });
       } else{
         ScaffoldMessenger.of(context).showSnackBar(
@@ -54,10 +56,22 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
   // create a function for changing color
- void changeColor(){
-    setState(() {
-      isPressed=true;
-    });
+ void CheckAnswerAndUpdate(bool value){
+    if(isAlreadySelected)
+      {
+        return;
+      }else{
+      if (value==true) {
+        score++;
+        setState(() {
+          isPressed = true;
+          isAlreadySelected= true;
+        });
+      }
+
+    }
+
+
  }
   @override
   Widget build(BuildContext context) {
@@ -91,7 +105,10 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 24.0,),
             for(int i=0; i<_questions[index].options.length; i++)
               GestureDetector(
-                onTap: (){},
+                onTap: ()=>CheckAnswerAndUpdate(_questions[index].options.values.toList()[i]),
+                  // lets create a function for checking the right answer
+                  //actually we will just modify the colorChange function
+
                 child: OptionCard(
                   option: _questions[index].options.keys.toList()[i],
                 // need to check if the answer is correct or false.
