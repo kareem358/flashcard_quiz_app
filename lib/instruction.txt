@@ -75,3 +75,9 @@ it is fixed now ..
 - now lets create a result box for the score, at the end of our quiz.will show user result
 - lets create our dialog box in a separate file (in a widget form )
 - with this our result box is completed ....
+
+- now lets add a button to start the quiz from start
+- now we need a function to , which function is to restart the quiz.
+  creating it in the home page
+- now here we have one more problem that we can't select the wrong option
+  the problem is fixed with all its aspect and need 
