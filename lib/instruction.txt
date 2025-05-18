@@ -74,4 +74,4 @@ it is fixed now ..
 
 - now lets create a result box for the score, at the end of our quiz.will show user result
 - lets create our dialog box in a separate file (in a widget form )
-
+- with this our result box is completed ....
