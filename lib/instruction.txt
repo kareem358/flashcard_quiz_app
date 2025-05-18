@@ -64,4 +64,14 @@ it is fixed now ..
   area of  different options
   so we will make sure the color change of the text as well when the option color is changed ..
   how it will work
+  0xFFE31818
+  0xFF28DD5E
+  these combination are of the same for blue
+  if we provide there does not have the same combination of red and green then it
+  will be the neutral color we will created before and the text color will return the  black and
+  if the color red and green appear the text color will turn into the  neutral means white.
+
+
+- now lets create a result box for the score, at the end of our quiz.will show user result
+- lets create our dialog box in a separate file (in a widget form )
 
