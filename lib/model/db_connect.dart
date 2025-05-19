@@ -16,4 +16,16 @@ import 'dart:convert';
      }));
    }
 
+
+    //fetch the data from database
+ Future<void> fetchQuestion() async{
+     // we just got the data using this , now let's print it to see what we got
+     http.get(url).then((response) {
+       // the 'then' method returns a 'response' which is our data.
+       // what inside will be  decoded first
+
+       var data = json.decode(response.body);
+       print(data);
+     });
+ }
  }
