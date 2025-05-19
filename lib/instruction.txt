@@ -1,4 +1,4 @@
-Now before moving to Ui design first lets make some constant  vatriable
+Now before moving to Ui design first lets make some constant  variable
 - create a separate file
 
 -lets start creating the homepage
@@ -23,6 +23,9 @@ Now before moving to Ui design first lets make some constant  vatriable
   will exceed the question number and will not find the required index
 - to fix this add some condition
 - now it will be fixed and if the list will ended , the button will show nothing
+
+- lets fetch the question from database.
+-
 
 - next lets add the options
 - in the home screen below the divider where the for loop and card is added
@@ -105,4 +108,12 @@ it is fixed now ..
   -create an object for 'DBconnect' class in  main.dart and add a question
   - hot restart  the app to run the main method.
   - that's all about how you add a question in database ....
+
+- use the same method we use to add question in main dart
+- thats how you fetch the question from the database
+
+- let's add some more data means questions
+- okay lets try to fetch these question added to the firebase database.
+- the function 'db.fetchQuestion();' is already in code just hot restart the app
+- we can see the question we have added 
 
