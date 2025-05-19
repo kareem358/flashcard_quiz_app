@@ -82,5 +82,27 @@ it is fixed now ..
 - now here we have one more problem that we can't select the wrong option
   the problem is fixed with all its aspect and need
 
+
 - now looking forward to polished and refine the app while adding some other features
 - working on database so visit the "firebase.google.com".
+      you have to log in to use firebase services
+      once logged in , clicked on 'go to Console' in right top, then create a project
+      once the project is created click on "realtime database", in build bar..
+      select the created database in the 'test mode'.
+
+- lets create a new file for database connection and functionalities ...(in model folder)
+  to connect to database, firebase has its own package for the flutter ..that's a little advanced..
+  so we will try to use the lightweight "http" package.
+  now enter the 'flutter pub add http' in the terminal.
+
+- lets start creating functions.
+  as firebase understand json data so we have to convert our question to
+  .json format
+  to do so we have to use another package called 'convert ' which is 'dart ' built in.
+
+
+  let's try to add a question in the database.
+  -create an object for 'DBconnect' class in  main.dart and add a question
+  - hot restart  the app to run the main method.
+  - that's all about how you add a question in database ....
+
