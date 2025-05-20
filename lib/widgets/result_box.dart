@@ -25,9 +25,7 @@ class ResultBox extends StatelessWidget {
             const Text('Result', 
               style:TextStyle(color: neutral , fontSize: 24.0) ,),
             const SizedBox(height: 20.0,),
-            CircleAvatar(child: Text("$result/$questionLength",
-            style: TextStyle(fontSize: 22.0),),
-            radius: 70.0,
+            CircleAvatar(radius: 70.0,
               /*backgroundColor: result==questionLength
                   ? correct
                   : result < questionLength/2
@@ -39,7 +37,8 @@ class ResultBox extends StatelessWidget {
                   ?Colors.yellow // yellow on 50% marks
                   :result<questionLength/2
                    ? incorrect // if less then 50% will show red color
-                  : correct, // on greater than 50% will show green
+                  : correct,child: Text("$result/$questionLength",
+            style: TextStyle(fontSize: 22.0),), // on greater than 50% will show green
             ),
             const SizedBox(height: 20.0,),
             Text(
