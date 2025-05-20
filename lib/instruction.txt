@@ -120,4 +120,9 @@ it is fixed now ..
 _ now how to display questions from database to the app
   - first of all , when we fetch the data from our database it's in a
   Map<dynamic, dynamic > format we have to convert it to Map<String, dynamic>.
+  Then we need each 'key , value ' pair to a question.
+  now we need some places to save these created question
+   - their may be in error occurred because our options are in Maps<String , dynamic> format
+   but we need the options in Maps<String , bool> format
+   To solve this , used Map.caste method
 
