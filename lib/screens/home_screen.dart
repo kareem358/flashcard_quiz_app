@@ -21,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   //creating a list data for the question
   // whether the list is final or not .. check it later on
- List<Question> _questions= [
+ final List<Question> _questions= [
     Question(id: '10', title: 'what is 2 +2', options:  {'5':false,
     '6':false, '4':true, '10':false}),
     Question(id: '11', title: 'what is 12 +2', options:  {'5':false,
