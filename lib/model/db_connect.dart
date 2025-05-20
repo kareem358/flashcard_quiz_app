@@ -24,7 +24,7 @@ import 'dart:convert';
        // the 'then' method returns a 'response' which is our data.
        // what inside will be  decoded first
 
-       var data = json.decode(response.body);
+       var data = json.decode(response.body) as Map<String, dynamic>;
        print(data);
      });
  }
