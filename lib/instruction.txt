@@ -19,7 +19,7 @@ Now before moving to Ui design first lets make some constant  variable
 - adding some functionalities to it
 - like on clicking next question will show
 - doing so we need to pass  a function that will do all the work
-- the next button will show an error becuse the index increment with the next button
+- the next button will show an error because the index increment with the next button
   will exceed the question number and will not find the required index
 - to fix this add some condition
 - now it will be fixed and if the list will ended , the button will show nothing
@@ -105,15 +105,19 @@ it is fixed now ..
 
 
   let's try to add a question in the database.
-  -create an object for 'DBconnect' class in  main.dart and add a question
-  - hot restart  the app to run the main method.
+  -create an object for 'DBConnect' class in  main.dart and add a question
+  - hot restart  the app to run the main method....
   - that's all about how you add a question in database ....
 
 - use the same method we use to add question in main dart
-- thats how you fetch the question from the database
+- that's how you fetch the question from the database
 
 - let's add some more data means questions
 - okay lets try to fetch these question added to the firebase database.
 - the function 'db.fetchQuestion();' is already in code just hot restart the app
-- we can see the question we have added 
+- we can see the question we have added
+
+_ now how to display questions from database to the app
+  - first of all , when we fetch the data from our database it's in a
+  Map<dynamic, dynamic > format we have to convert it to Map<String, dynamic>.
 
