@@ -25,7 +25,21 @@ import 'dart:convert';
        // what inside will be  decoded first
 
        var data = json.decode(response.body) as Map<String, dynamic>;
-       print(data);
+       List<Question> newQuestions =[];
+       data.forEach((key, value){
+         var newQuestion= Question (
+           id: key,// the encrypted key/ the title we give to our data
+           title : value ['title'],// title of the question
+           options:Map.castFrom(value['options']),
+
+
+         );
+
+         // add to new question
+         newQuestions.add(newQuestion);
+
+       });
+       print(newQuestions);
      });
  }
  }
