@@ -18,9 +18,9 @@ import 'dart:convert';
 
 
     //fetch the data from database
- Future<void> fetchQuestion() async{
+ Future<List<Question>> fetchQuestion() async{
      // we just got the data using this , now let's print it to see what we got
-     http.get(url).then((response) {
+    return http.get(url).then((response) {
        // the 'then' method returns a 'response' which is our data.
        // what inside will be  decoded first
 
@@ -39,7 +39,7 @@ import 'dart:convert';
          newQuestions.add(newQuestion);
 
        });
-       print(newQuestions);
+       return newQuestions;
      });
  }
  }
