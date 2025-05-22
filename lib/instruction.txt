@@ -126,3 +126,7 @@ _ now how to display questions from database to the app
    but we need the options in Maps<String , bool> format
    To solve this , used Map.caste method
 
+
+  - Now we need to replace the  in app question to the question we fetched form the database.
+
+
