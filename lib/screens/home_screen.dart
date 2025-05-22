@@ -5,6 +5,7 @@ import '../widgets/question_widget.dart';
 import '../widgets/next_button.dart';
 import '../widgets/option_card.dart';
 import '../widgets/result_box.dart';
+import '../model/db_connect.dart';
 
 
 // create the HomeScreen widget
@@ -19,17 +20,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   //creating a list data for the question
   // whether the list is final or not .. check it later on
- final List<Question> _questions= [
-    Question(id: '10', title: 'what is 2 +2', options:  {'5':false,
-    '6':false, '4':true, '10':false}),
-    Question(id: '11', title: 'what is 12 +2', options:  {'5':false,
-      '6':false, '14':true, '10':false})
-
-  ];
+  // final List<Question> _questions= [
+  //    Question(id: '10', title: 'what is 2 +2', options:  {'5':false,
+  //    '6':false, '4':true, '10':false}),
+  //    Question(id: '11', title: 'what is 12 +2', options:  {'5':false,
+  //      '6':false, '14':true, '10':false})
+  //
+  //  ];
 
   //create an index to loop through -questions
+  // create an object for Dbconnect
+  var db = DBconnect();
+  late Future _questions;
+  Future<List<Question>> getData( )async {
+    return db.fetchQuestion();
+  }
+  
+  @override
+  void initState(){
+    _questions = getData();
+    super.initState();
+  }
+  
+  
+ 
   int index=0;
   // create a score variable
  int score =0;
@@ -99,61 +116,81 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     // change the background color
-    return Scaffold(
-      backgroundColor:background,
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        shadowColor: Colors.transparent,
-        title: Text('Quiz App'),
-        actions: [
-          Padding(padding: const EdgeInsets.all(18.0), child: Text("Score: $score",
-          style: const TextStyle(fontSize: 18.0),),),
-        ],
-      ),
-      body: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Column(
-
-          children: [
-            // add the question widget here
-            QuestionWidget(indexAction: index,// currently at zero index
-                question: _questions[index].title,// first  in the list question
-                totalQuestions: _questions.length, // total length of the list
-
-            ),
-
-            const Divider(color: neutral,),
-            // add some const space
-            const SizedBox(height: 24.0,),
-            for(int i=0; i<_questions[index].options.length; i++)
-              GestureDetector(
-                onTap: ()=>CheckAnswerAndUpdate(_questions[index].options.values.toList()[i]),
-                  // lets create a function for checking the right answer
-                  //actually we will just modify the colorChange function
-
-                child: OptionCard(
-                  option: _questions[index].options.keys.toList()[i],
-                // need to check if the answer is correct or false.
-                  color: isPressed ? _questions[index].options.values.toList()[i]==true
-                    ? correct:
-                      incorrect:
-                     neutral,
-                //onTap: changeColor,
-                          ),
+    // use the futureBuilder widget
+    
+    return FutureBuilder(
+      future: _questions as Future<List<Question>>,
+      builder: (ctx, snapshot){
+        if(snapshot.connectionState== ConnectionState){
+          if (snapshot.hasError){
+            return Center(child: Text("${snapshot.error}"),);
+          } else if ( snapshot.hasData){
+            var extractedData= snapshot.data as List<Question>;
+            return Scaffold(
+              backgroundColor:background,
+              appBar: AppBar(
+                backgroundColor: Colors.blue,
+                shadowColor: Colors.transparent,
+                title: Text('Quiz App'),
+                actions: [
+                  Padding(padding: const EdgeInsets.all(18.0), child: Text("Score: $score",
+                    style: const TextStyle(fontSize: 18.0),),),
+                ],
               ),
+              body: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
 
-          ],
-        ),
-      ),
-      // use floating button
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: NextButton(
-          nextQuestion: nextQuestion, // the above function called
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+                  children: [
+                    // add the question widget here
+                    QuestionWidget(indexAction: index,// currently at zero index
+                      question: extractedData[index].title,// first  in the list question
+                      totalQuestions:extractedData.length, // total length of the list
+
+                    ),
+
+                    const Divider(color: neutral,),
+                    // add some const space
+                    const SizedBox(height: 24.0,),
+                    for(int i=0; i<extractedData[index].options.length; i++)
+                      GestureDetector(
+                        onTap: ()=>CheckAnswerAndUpdate(extractedData[index].options.values.toList()[i]),
+                        // lets create a function for checking the right answer
+                        //actually we will just modify the colorChange function
+
+                        child: OptionCard(
+                          option: _questions[index].options.keys.toList()[i],
+                          // need to check if the answer is correct or false.
+                          color: isPressed ? _questions[index].options.values.toList()[i]==true
+                              ? correct:
+                          incorrect:
+                          neutral,
+                          //onTap: changeColor,
+                        ),
+                      ),
+
+                  ],
+                ),
+              ),
+              // use floating button
+              floatingActionButton: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: NextButton(
+                  nextQuestion: nextQuestion, // the above function called
+                ),
+              ),
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            ),
+          }
+
+        } else {
+          return const Center(
+          child:CircularProgressIndicator() ,
+          );
+        }
+      },
+
     );
   }
 }// import this file to main.dart file
