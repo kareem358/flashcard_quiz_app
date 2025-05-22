@@ -54,8 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
  bool isPressed= false;
  bool isAlreadySelected= false;
   // create a function to display the next question
-  void nextQuestion(){
-    if (index== _questions.length-1){
+  void nextQuestion(int questionLength){
+    if (index== questionLength-1){
       //return;
       // the block where the quiz end .. means question end
       showDialog(
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // this will disable the dismiss function outside the box on clicking
           builder: (ctx)=>ResultBox(
         result: score,// total points the user got
-        questionLength: _questions.length,// out of  how many question
+        questionLength: questionLength,// out of  how many question
             onPressed: startOver,
       ));
     } else {
@@ -160,9 +160,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         //actually we will just modify the colorChange function
 
                         child: OptionCard(
-                          option: _questions[index].options.keys.toList()[i],
+                          option: extractedData[index].options.keys.toList()[i],
                           // need to check if the answer is correct or false.
-                          color: isPressed ? _questions[index].options.values.toList()[i]==true
+                          color: isPressed ? extractedData[index].options.values.toList()[i]==true
                               ? correct:
                           incorrect:
                           neutral,
@@ -174,14 +174,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               // use floating button
-              floatingActionButton: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: NextButton(
-                  nextQuestion: nextQuestion, // the above function called
+              floatingActionButton: GestureDetector(
+                onTap: ()=> nextQuestion(extractedData.length),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: NextButton(
+                    // the above function called
+                  ),
                 ),
               ),
               floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-            ),
+            );
           }
 
         } else {
@@ -189,6 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child:CircularProgressIndicator() ,
           );
         }
+        return Center(child: Text("No Data"),);
       },
 
     );
