@@ -8,13 +8,13 @@ import 'dart:convert';
    final url = Uri.parse('https://flashcardquizapp-a138a-default-rtdb.firebaseio.com/'
        'question.json');
 
-
-   Future<void> addQuestion(Question question)async{
-     http.post(url, body: json.encode({
-       'title': question.title,
-       'option': question.options,
-     }));
-   }
+// it is required if we want to add any question directly from app.
+   // Future<void> addQuestion(Question question)async{
+   //   http.post(url, body: json.encode({
+   //     'title': question.title,
+   //     'option': question.options,
+   //   }));
+   // }
 
 
     //fetch the data from database
