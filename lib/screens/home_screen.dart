@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return FutureBuilder(
       future: _questions as Future<List<Question>>,
       builder: (ctx, snapshot){
-        if(snapshot.connectionState== ConnectionState){
+        if(snapshot.connectionState== ConnectionState.done){
           if (snapshot.hasError){
             return Center(child: Text("${snapshot.error}"),);
           } else if ( snapshot.hasData){
