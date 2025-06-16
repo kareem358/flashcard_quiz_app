@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+//import '../model/question_model.dart';
 import './screens/home_screen.dart';
-import './model/db_connect.dart';
+//import './model/db_connect.dart';
 // run the main method
 
 void main ()
 {
-  var db= DBconnect();
-  // db.addQuestion(Question(id: '20', title: 'what is 20 x 3 ?', options:{
-  //   '100':false,
-  //   '80' : false,
-  //   '23' : false,
-  //   '60' : true,
-  // }));
-  db.fetchQuestion();
+  // var db= DBconnect();
+  // // db.addQuestion(Question(id: '20', title: 'what is 20 x 3 ?', options:{
+  // //   '100':false,
+  // //   '80' : false,
+  // //   '23' : false,
+  // //   '60' : true,
+  // // }));
+  // db.fetchQuestion();
   runApp(
     const MyApp(),// creating MyApp below
   );
