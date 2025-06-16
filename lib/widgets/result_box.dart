@@ -23,7 +23,7 @@ class ResultBox extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text('Result', 
-              style:TextStyle(color: neutral , fontSize: 24.0) ,),
+              style:const TextStyle(color: neutral , fontSize: 24.0) ,),
             const SizedBox(height: 20.0,),
             CircleAvatar(radius: 70.0,
               /*backgroundColor: result==questionLength
