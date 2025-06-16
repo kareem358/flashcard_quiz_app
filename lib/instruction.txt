@@ -128,5 +128,9 @@ _ now how to display questions from database to the app
 
 
   - Now we need to replace the  in app question to the question we fetched form the database.
-
+   - now we are fetching data form database firebase and displayomg it in our app
+   - here we have it . the sample quiz app that fetches data from database
+   here now we don't need the addquestion method anymore.
+   remove the addQuestion method if you don't want to add a question directly form app
+   if so then you have to create a separate page as well.
 
