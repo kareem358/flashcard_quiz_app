@@ -176,8 +176,8 @@ class _HomeScreenState extends State<HomeScreen> {
               // use floating button
               floatingActionButton: GestureDetector(
                 onTap: ()=> nextQuestion(extractedData.length),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: const Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 10.0),
                   child: NextButton(
                     // the above function called
                   ),
