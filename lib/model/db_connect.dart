@@ -30,7 +30,9 @@ import 'dart:convert';
          var newQuestion= Question (
            id: key,// the encrypted key/ the title we give to our data
            title : value ['title'],// title of the question
-           options:Map.castFrom(value['options']),
+           options:value['options'] != null
+               ? Map.castFrom(value['options'])
+               : <String, bool>{},
 
 
          );
