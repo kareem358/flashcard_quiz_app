@@ -15,6 +15,13 @@ class Question{
     required this.title,
     required this.options,
 });
+  factory Question.fromMap(Map<String, dynamic> map) {
+    return Question(
+      id: map['id'],
+      title: map['title'],
+      options: Map<String, bool>.from(map['options']),
+    );
+  }
   // override the tostring method to print the question on console
   @override
   String toString() {
@@ -23,3 +30,12 @@ class Question{
     return 'Question(id: $id, title: $title, options: $options )';
   }
 }
+/*to be written instead of override and string method
+  factory Question.fromMap(Map<String, dynamic> map) {
+    return Question(
+      id: map['id'],
+      title: map['title'],
+      options: Map<String, bool>.from(map['options']),
+    );
+  }
+*/
