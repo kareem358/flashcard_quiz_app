@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../model/question_model.dart';
-import '../widgets/question_widget.dart';
+import '../widgets/question_widget.dart' as widget_widgets;
 import '../widgets/next_button.dart';
 import '../widgets/option_card.dart';
 import '../widgets/result_box.dart';
 import '../model/db_connect.dart';
 
-
-// create the HomeScreen widget
-
-//stateful widget because it is the  parent widget and all the variable and function will be
-// in this  widget which can change the state of our widget anytime
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -20,181 +15,152 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  //creating a list data for the question
-  // whether the list is final or not .. check it later on
-  // final List<Question> _questions= [
-  //    Question(id: '10', title: 'what is 2 +2', options:  {'5':false,
-  //    '6':false, '4':true, '10':false}),
-  //    Question(id: '11', title: 'what is 12 +2', options:  {'5':false,
-  //      '6':false, '14':true, '10':false})
-  //
-  //  ];
-
-  //create an index to loop through -questions
-  // create an object for Dbconnect
   var db = DBconnect();
-  late Future _questions;
-  Future<List<Question>> getData( )async {
+  late Future<List<Question>> _questions;
+
+  Future<List<Question>> getData() async {
     return db.fetchQuestion();
   }
-  
-  @override
-  void initState(){
-    _questions = getData();
-    super.initState();
-  }
-  
-  
- 
-  int index=0;
-  // create a score variable
- int score =0;
-  // create a boolean value to check if the user has clicked or not
- bool isPressed= false;
- bool isAlreadySelected= false;
-  // create a function to display the next question
-  void nextQuestion(int questionLength){
-    if (index== questionLength-1){
-      //return;
-      // the block where the quiz end .. means question end
+
+  int index = 0;
+  int score = 0;
+  bool isPressed = false;
+  bool isAlreadySelected = false;
+
+  void nextQuestion(int questionLength) {
+    if (index == questionLength - 1) {
       showDialog(
-          context: context,
-          barrierDismissible: false,
-          // this will disable the dismiss function outside the box on clicking
-          builder: (ctx)=>ResultBox(
-        result: score,// total points the user got
-        questionLength: questionLength,// out of  how many question
-            onPressed: startOver,
-      ));
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) => ResultBox(
+          result: score,
+          questionLength: questionLength,
+          onPressed: startOver,
+        ),
+      );
     } else {
       if (isPressed) {
         setState(() {
-          index++; // after index changing , the app will be rebuild
+          index++;
           isPressed = false;
-          isAlreadySelected=false;
+          isAlreadySelected = false;
         });
-      } else{
+      } else {
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Please select at least one option"),
-              behavior: SnackBarBehavior.floating,
-              margin: EdgeInsets.symmetric(vertical: 20.0),)
+          const SnackBar(
+            content: Text("Please select at least one option"),
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.symmetric(vertical: 20.0),
+          ),
         );
       }
     }
   }
-  // create a function for changing color
- void CheckAnswerAndUpdate(bool value){
-    if(isAlreadySelected)
-      {
-        return;
-      }else{
-      if (value==true) {
-        score++;
-      }
-      setState(() {
-        isPressed = true;
-        isAlreadySelected= true;
-      });
 
+  void CheckAnswerAndUpdate(bool value) {
+    if (isAlreadySelected) return;
+
+    if (value == true) {
+      score++;
     }
 
+    setState(() {
+      isPressed = true;
+      isAlreadySelected = true;
+    });
+  }
 
- }
-
- // create a function to start over
- void startOver(){
+  void startOver() {
     setState(() {
       index = 0;
       score = 0;
       isAlreadySelected = false;
       isPressed = false;
     });
-      Navigator.pop(context);
- }
+    Navigator.pop(context);
+  }
+
+  @override
+  void initState() {
+    _questions = getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // change the background color
-    // use the futureBuilder widget
-    
     return FutureBuilder(
-      future: _questions as Future<List<Question>>,
-      builder: (ctx, snapshot){
-        if(snapshot.connectionState== ConnectionState.done){
-          if (snapshot.hasError){
-            return Center(child: Text("${snapshot.error}"),);
-          } else if ( snapshot.hasData){
-            var extractedData= snapshot.data as List<Question>;
+      future: _questions,
+      builder: (ctx, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return Center(child: Text("${snapshot.error}"));
+          } else if (snapshot.hasData) {
+            var extractedData = snapshot.data as List<Question>;
+
             return Scaffold(
-              backgroundColor:background,
+              backgroundColor: background,
               appBar: AppBar(
                 backgroundColor: Colors.blue,
                 shadowColor: Colors.transparent,
                 title: Text('Quiz App'),
                 actions: [
-                  Padding(padding: const EdgeInsets.all(18.0), child: Text("Score: $score",
-                    style: const TextStyle(fontSize: 18.0),),),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text(
+                      "Score: $score",
+                      style: const TextStyle(fontSize: 18.0),
+                    ),
+                  ),
                 ],
               ),
               body: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
-
                   children: [
-                    // add the question widget here
-                    QuestionWidget(indexAction: index,// currently at zero index
-                      question: extractedData[index].title,// first  in the list question
-                      totalQuestions:extractedData.length, // total length of the list
-
+                    widget_widgets.QuestionWidget(
+                      indexAction: index,
+                      question: extractedData[index].title,
+                      totalQuestions: extractedData.length,
                     ),
-
-                    const Divider(color: neutral,),
-                    // add some const space
-                    const SizedBox(height: 24.0,),
-                    for(int i=0; i<extractedData[index].options.length; i++)
+                    const Divider(color: neutral),
+                    const SizedBox(height: 24.0),
+                    for (int i = 0; i < extractedData[index].options.length; i++)
                       GestureDetector(
-                        onTap: ()=>CheckAnswerAndUpdate(extractedData[index].options.values.toList()[i]),
-                        // lets create a function for checking the right answer
-                        //actually we will just modify the colorChange function
-
+                        onTap: () => CheckAnswerAndUpdate(
+                          extractedData[index].options.values.toList()[i],
+                        ),
                         child: OptionCard(
                           option: extractedData[index].options.keys.toList()[i],
-                          // need to check if the answer is correct or false.
-                          color: isPressed ? extractedData[index].options.values.toList()[i]==true
-                              ? correct:
-                          incorrect:
-                          neutral,
-                          //onTap: changeColor,
+                          color: isPressed
+                              ? extractedData[index]
+                              .options
+                              .values
+                              .toList()[i] ==
+                              true
+                              ? correct
+                              : incorrect
+                              : neutral,
                         ),
                       ),
-
                   ],
                 ),
               ),
-              // use floating button
               floatingActionButton: GestureDetector(
-                onTap: ()=> nextQuestion(extractedData.length),
+                onTap: () => nextQuestion(extractedData.length),
                 child: const Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 10.0),
-                  child: NextButton(
-                    // the above function called
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: NextButton(),
                 ),
               ),
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+              floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
             );
           }
-
-        } else {
-          return const Center(
-          child:CircularProgressIndicator() ,
-          );
         }
-        return Center(child: Text("No Data"),);
-      },
 
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
-}// import this file to main.dart file
+}
