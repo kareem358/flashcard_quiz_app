@@ -1,41 +1,32 @@
 // will create a question model here
 
-class Question{
-  // create the structure of the question
-  //every question will get an id
-
+class Question {
   final String id;
-  // there must be a title of the question so
   final String title;
-  // options for the question
-  final Map <String, bool> options;
-  // option  will be like - {'1': true, '2':false} = like so
+  final Map<String, bool> options;
+
   Question({
     required this.id,
     required this.title,
     required this.options,
-});
-  factory Question.fromMap(Map<String, dynamic> map) {
+  });
+
+  // ✅ Safe factory that converts ANY JSON into the correct types
+  factory Question.fromMap(String id, Map<dynamic, dynamic> map) {
+    final title = map['title']?.toString() ?? '';
+    final rawOptions = map['options'] as Map<dynamic, dynamic>? ?? {};
+    final parsedOptions = <String, bool>{};
+    rawOptions.forEach((key, value) {
+      parsedOptions[key.toString()] = value == true;
+    });
+
     return Question(
-      id: map['id'],
-      title: map['title'],
-      options: Map<String, bool>.from(map['options']),
+      id: id,
+      title: title,
+      options: parsedOptions,
     );
   }
-  // override the tostring method to print the question on console
+
   @override
-  String toString() {
-    // TODO: implement toString
-    //return super.toString();
-    return 'Question(id: $id, title: $title, options: $options )';
-  }
+  String toString() => 'Question(id: $id, title: $title, options: $options)';
 }
-/*to be written instead of override and string method
-  factory Question.fromMap(Map<String, dynamic> map) {
-    return Question(
-      id: map['id'],
-      title: map['title'],
-      options: Map<String, bool>.from(map['options']),
-    );
-  }
-*/
