@@ -100,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Scaffold(
               backgroundColor: background,
               appBar: AppBar(
+                centerTitle: true,
                 backgroundColor: Colors.blue,
                 shadowColor: Colors.transparent,
                 title: Text('Quiz App'),
