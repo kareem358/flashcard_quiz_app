@@ -4,8 +4,7 @@ import './question_model.dart';
 
 class DBconnect {
   final url = Uri.parse(
-      'https://flashcardquizapp-a138a-default-rtdb.firebaseio.com/question.json');
-
+      'https://flashcardquizapp-a138a-default-rtdb.firebaseio.com/');
   Future<List<Question>> fetchQuestion() async {
     final resp = await http.get(url);
     final raw = json.decode(resp.body);
