@@ -42,7 +42,7 @@ class ResultBox extends StatelessWidget {
             ),
             const SizedBox(height: 20.0,),
             Text(
-              result== questionLength/2
+              result == (questionLength ~/ 2)
                   ?' Almost there ' // yellow on 50% marks
                   :result<questionLength/2
                   ? "good Luck Next time" // if less then 50% will show red color
