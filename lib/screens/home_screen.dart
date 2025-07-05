@@ -88,14 +88,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return FutureBuilder<List<Question>>(
       future: _questions,
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
             return Center(child: Text("${snapshot.error}"));
           } else if (snapshot.hasData) {
-            var extractedData = snapshot.data as List<Question>;
+            var extractedData = snapshot.data!;
+
+            if (extractedData.isEmpty) {
+              return const Center(child: Text("No questions available"));
+            }
+
+            if (index >= extractedData.length) {
+              return const Center(child: Text("Invalid question index"));
+            }
 
             return Scaffold(
               backgroundColor: background,
@@ -103,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 centerTitle: true,
                 backgroundColor: Colors.blue,
                 shadowColor: Colors.transparent,
-                title: Text('Quiz App'),
+                title: const Text('Quiz App'),
                 actions: [
                   Padding(
                     padding: const EdgeInsets.all(18.0),
@@ -134,11 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: OptionCard(
                           option: extractedData[index].options.keys.toList()[i],
                           color: isPressed
-                              ? extractedData[index]
-                              .options
-                              .values
-                              .toList()[i] ==
-                              true
+                              ? extractedData[index].options.values.toList()[i] == true
                               ? correct
                               : incorrect
                               : neutral,
@@ -154,8 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: NextButton(),
                 ),
               ),
-              floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
             );
           }
         }
