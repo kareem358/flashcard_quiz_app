@@ -25,7 +25,8 @@ class OptionCard extends StatelessWidget {
             fontSize: 23.0,
             // we will decide if the color we are receiving for which
             // ratio of green and red
-            color: color.red != color.green ? neutral: Colors.black,
+          //  color: color.red != color.green ? neutral: Colors.black,
+            color: color == neutral ? Colors.black : neutral,
           ),
         ),
       ),
