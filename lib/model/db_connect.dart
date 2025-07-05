@@ -17,7 +17,7 @@ class DBconnect {
         qs.add(Question.fromMap(key.toString(), value));
       }
     });
-    //print("Loaded questions count: ${questions.length}");
+    print("Loaded questions count: ${qs.length}");
     return qs;
   }
 }
