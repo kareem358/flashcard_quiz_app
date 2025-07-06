@@ -3,7 +3,7 @@ import '../constants.dart';
 import '../model/question_model.dart';
 import '../widgets/question_widget.dart' as widget_widgets;
 import '../widgets/next_button.dart';
-import '../widgets/option_card.dart';
+//import '../widgets/option_card.dart';
 import '../widgets/result_box.dart';
 import '../model/db_connect.dart';
 
@@ -127,8 +127,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      child: LinearProgressIndicator(
+                        value: (index + 1) / extractedData.length,
+                        backgroundColor: Colors.grey.shade300,
+                        color: Colors.blueAccent,
+                        minHeight: 8.0,
+                      ),
+                    ),
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 500),
+
                       child: widget_widgets.QuestionWidget(
                         key: ValueKey<int>(index),  // <- important for AnimatedSwitcher to detect change
                         indexAction: index,
