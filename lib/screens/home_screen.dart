@@ -148,15 +148,68 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () => CheckAnswerAndUpdate(
                           extractedData[index].options.values.toList()[i],
                         ),
-                        child: OptionCard(
-                          option: extractedData[index].options.keys.toList()[i],
-                          color: isPressed
-                              ? extractedData[index].options.values.toList()[i] == true
-                              ? correct
-                              : incorrect
-                              : neutral,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                          decoration: BoxDecoration(
+                            color: isPressed
+                                ? extractedData[index].options.values.toList()[i] == true
+                                ? correct
+                                : incorrect
+                                : neutral,
+                            borderRadius: BorderRadius.circular(12.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 4,
+                                offset: const Offset(0, 2),
+                              )
+                            ],
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                extractedData[index].options.keys.toList()[i],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: isPressed
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              if (isPressed)
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Icon(
+                                    extractedData[index].options.values.toList()[i] == true
+                                        ? Icons.check_circle
+                                        : Icons.cancel,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                       ),
+                    // for (int i = 0; i < extractedData[index].options.length; i++)
+                    //   GestureDetector(
+                    //     onTap: () => CheckAnswerAndUpdate(
+                    //       extractedData[index].options.values.toList()[i],
+                    //     ),
+                    //     child: OptionCard(
+                    //       option: extractedData[index].options.keys.toList()[i],
+                    //       color: isPressed
+                    //           ? extractedData[index].options.values.toList()[i] == true
+                    //           ? correct
+                    //           : incorrect
+                    //           : neutral,
+                    //     ),
+                    //   ),
                   ],
                 ),
               ),
