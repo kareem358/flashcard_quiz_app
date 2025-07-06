@@ -127,11 +127,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: [
-                    widget_widgets.QuestionWidget(
-                      indexAction: index,
-                      question: extractedData[index].title,
-                      totalQuestions: extractedData.length,
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 500),
+                      child: widget_widgets.QuestionWidget(
+                        key: ValueKey<int>(index),  // <- important for AnimatedSwitcher to detect change
+                        indexAction: index,
+                        question: extractedData[index].title,
+                        totalQuestions: extractedData.length,
+                      ),
                     ),
+                    // widget_widgets.QuestionWidget(
+                    //   indexAction: index,
+                    //   question: extractedData[index].title,
+                    //   totalQuestions: extractedData.length,
+                    // ),
                     const Divider(color: neutral),
                     const SizedBox(height: 24.0),
                     for (int i = 0; i < extractedData[index].options.length; i++)
