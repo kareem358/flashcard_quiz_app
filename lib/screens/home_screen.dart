@@ -3,7 +3,7 @@ import '../constants.dart';
 import '../model/question_model.dart';
 import '../widgets/question_widget.dart' as widget_widgets;
 import '../widgets/next_button.dart';
-//import '../widgets/option_card.dart';
+
 import '../widgets/result_box.dart';
 import '../model/db_connect.dart';
 
@@ -146,11 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         totalQuestions: extractedData.length,
                       ),
                     ),
-                    // widget_widgets.QuestionWidget(
-                    //   indexAction: index,
-                    //   question: extractedData[index].title,
-                    //   totalQuestions: extractedData.length,
-                    // ),
+
                     const Divider(color: neutral),
                     const SizedBox(height: 24.0),
                     for (int i = 0; i < extractedData[index].options.length; i++)
@@ -206,20 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                    // for (int i = 0; i < extractedData[index].options.length; i++)
-                    //   GestureDetector(
-                    //     onTap: () => CheckAnswerAndUpdate(
-                    //       extractedData[index].options.values.toList()[i],
-                    //     ),
-                    //     child: OptionCard(
-                    //       option: extractedData[index].options.keys.toList()[i],
-                    //       color: isPressed
-                    //           ? extractedData[index].options.values.toList()[i] == true
-                    //           ? correct
-                    //           : incorrect
-                    //           : neutral,
-                    //     ),
-                    //   ),
+
                   ],
                 ),
               ),
