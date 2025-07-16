@@ -48,21 +48,7 @@ class ResultBox extends StatelessWidget {
                 );
               },
             ),
-           /* CircleAvatar(radius: 70.0,
-              *//*backgroundColor: result==questionLength
-                  ? correct
-                  : result < questionLength/2
-                  ? incorrect
-                  : result== questionLength/2
-                  ? Colors.yellow
-                  : Colors.blue,*//*
-              backgroundColor: result== questionLength/2
-                  ?Colors.yellow // yellow on 50% marks
-                  :result<questionLength/2
-                   ? incorrect // if less then 50% will show red color
-                  : correct,child: Text("$result/$questionLength",
-            style: TextStyle(fontSize: 22.0),), // on greater than 50% will show green
-            ),*/
+
             const SizedBox(height: 20.0,),
             Text(
               result == (questionLength ~/ 2)
