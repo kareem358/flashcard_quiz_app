@@ -111,7 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 centerTitle: true,
                 backgroundColor: Colors.blue,
                 shadowColor: Colors.transparent,
-                title: const Text('Quiz App'),
+                title: const Text('Quiz App',
+                    style: const TextStyle(color: Colors.white,
+                    fontWeight: FontWeight.bold,fontSize: 26),),
                 actions: [
                   Padding(
                     padding: const EdgeInsets.all(18.0),
