@@ -17,7 +17,7 @@ class DBconnect {
         qs.add(Question.fromMap(key.toString(), value));
       }
     });
-   
+
     return qs;
   }
 }
