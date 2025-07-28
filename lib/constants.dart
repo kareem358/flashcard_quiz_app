@@ -1,4 +1,4 @@
-// color variable and stuff will be store here
+
 import 'package:flutter/material.dart';
 
 const Color correct = Color(0xFF4CAF50);
