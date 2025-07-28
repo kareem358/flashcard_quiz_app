@@ -1,4 +1,3 @@
-// will create a question model here
 
 class Question {
   final String id;
