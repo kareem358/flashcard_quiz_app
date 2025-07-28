@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-//import '../model/question_model.dart';
+
 import './screens/home_screen.dart';
-//import './model/db_connect.dart';
+
 
 void main ()
 {
