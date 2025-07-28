@@ -17,9 +17,7 @@ class DBconnect {
         qs.add(Question.fromMap(key.toString(), value));
       }
     });
-    /*print("Response code: ${resp.statusCode}");
-    print("Response body: ${resp.body}");
-    print("Loaded questions count: ${qs.length}");*/
+   
     return qs;
   }
 }
