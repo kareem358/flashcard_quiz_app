@@ -10,7 +10,7 @@ class Question {
     required this.options,
   });
 
-  // ✅ Safe factory that converts ANY JSON into the correct types
+
   factory Question.fromMap(String id, Map<dynamic, dynamic> map) {
     final title = map['title']?.toString() ?? '';
     final rawOptions = map['options'] as Map<dynamic, dynamic>? ?? {};
