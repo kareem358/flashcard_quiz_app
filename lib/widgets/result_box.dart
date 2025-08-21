@@ -62,9 +62,6 @@ class ResultBox extends StatelessWidget {
             GestureDetector(
               onTap: onPressed,
                 // now we need a function to , which function is to restart the quiz
-
-
-
               child: const Text(
                 "Start Over",
                 style: TextStyle(
