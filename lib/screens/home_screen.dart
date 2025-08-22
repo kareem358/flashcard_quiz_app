@@ -166,7 +166,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ? correct
                                 : incorrect
                                 : neutral,
-                            bo
+                            borderRadius: BorderRadius.circular(12.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 4,
+                                offset: const Offset(0, 2),
+                              )
+                            ],
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
                           child: Row(
