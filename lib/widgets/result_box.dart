@@ -72,7 +72,17 @@ class ResultBox extends StatelessWidget {
 
                 ),
               ),
-            )
+            ),
+            const SizedBox(height: 15.0),
+            GestureDetector(
+              onTap: () {
+                Share.share(
+                  "I scored $result out of $questionLength on the Modern Quiz App! Try to beat me!",
+                );
+              },
+              child: const Text(
+                "Share Result",
+                style: TextStyle(
                   color: Colors.orange,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
