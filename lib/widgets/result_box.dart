@@ -84,7 +84,9 @@ class ResultBox extends StatelessWidget {
                 "Share Result",
                 style: TextStyle(
                   color: Colors.orange,
-
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
                 ),
               ),
             ),
