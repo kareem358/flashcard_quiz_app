@@ -19,9 +19,7 @@ class OptionCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       elevation: 4.0, // subtle shadow
-      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+      margin: const EdgeInsets.symmetric(verti
         child: Text(
           option,
           textAlign: TextAlign.center,
