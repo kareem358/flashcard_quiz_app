@@ -77,23 +77,7 @@ class ResultBox extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Share.share(
-                  "I scored $result out of $questionLength on the Modern Quiz App! Try to beat me!",
-                );
-              },
-              child: const Text(
-                "Share Result",
-                style: TextStyle(
-                  color: Colors.orange,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.0,
-                ),
-              ),
-            ),
-
-          ],
-        ),
-      
+        
       ),
     );
   }
