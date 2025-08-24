@@ -159,26 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.easeInOut,
-                          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
-                          decoration: BoxDecoration(
-                            color: isPressed
-                                ? extractedData[index].options.values.toList()[i] == true
-                                ? correct
-                                : incorrect
-                                : neutral,
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 4,
-                                offset: const Offset(0, 2),
-                              )
-                            ],
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+
                               Text(
                                 extractedData[index].options.keys.toList()[i],
                                 textAlign: TextAlign.center,
