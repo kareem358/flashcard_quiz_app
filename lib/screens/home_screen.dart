@@ -1,4 +1,20 @@
+import 'package:flutter/material.dart';
+import '../constants.dart';
+import '../model/question_model.dart';
+import '../widgets/question_widget.dart' as widget_widgets;
+import '../widgets/next_button.dart';
 
+import '../widgets/result_box.dart';
+import '../model/db_connect.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   var db = DBconnect();
   late Future<List<Question>> _questions;
 
